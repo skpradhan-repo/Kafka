@@ -1,4 +1,4 @@
-package com.samsoft.kafka.producer.constant;
+package com.samsoft.kafka.constant;
 
 public class AppConfig {
     public static final String APPLICATION_ID = "HelloProducer2";

@@ -1,11 +1,10 @@
 package com.samsoft.kafka.producer;
 
 
-import com.samsoft.kafka.producer.constant.AppConfig;
+import com.samsoft.kafka.constant.AppConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

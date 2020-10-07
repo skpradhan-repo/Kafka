@@ -1,7 +1,7 @@
 package com.samsoft.kafka.producer;
 
 
-import com.samsoft.kafka.producer.constant.AppConfig;
+import com.samsoft.kafka.constant.AppConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
