@@ -5,6 +5,7 @@ import com.samsoft.kafka.constant.AppConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,15 +20,15 @@ public class HelloProducer {
         Properties properties = new Properties();
         properties.put(ProducerConfig.CLIENT_ID_CONFIG, AppConfig.APPLICATION_ID);
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, AppConfig.BOOTSTRAP_SERVERS);
-        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
+        KafkaProducer<Integer, String> producer = new KafkaProducer<Integer, String>(properties);
 
-        logger.info("Start sending messages");
+        logger.info("Start sending messages to topic  : "+AppConfig.TOPIC_NAME);
 
-        for (int i = 0; i < 5; i++) {
-            producer.send(new ProducerRecord<>(AppConfig.TOPIC_NAME, "Hello "+i, "Simple Message : "+i));
+        for (int i = 0; i < AppConfig.numEvents; i++) {
+            producer.send(new ProducerRecord<>(AppConfig.TOPIC_NAME, i, "New Messages From Topic3: "+i));
         }
 
         logger.info("Finished - Closing Kafka Producer");
